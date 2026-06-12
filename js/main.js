@@ -128,6 +128,7 @@
                 
                 // Close mobile menu
                 document.getElementById('nav-links')?.classList.remove('mobile-open');
+                document.getElementById('navbar')?.classList.remove('menu-open');
                 const toggle = document.getElementById('mobile-toggle');
                 if (toggle) { toggle.classList.remove('active'); toggle.setAttribute('aria-expanded', 'false'); }
             });
@@ -140,6 +141,7 @@
             mobileToggle.addEventListener('click', () => {
                 const open = mobileToggle.classList.toggle('active');
                 navLinks.classList.toggle('mobile-open');
+                document.getElementById('navbar')?.classList.toggle('menu-open', open);
                 mobileToggle.setAttribute('aria-expanded', String(open));
                 mobileToggle.setAttribute('aria-label', open ? 'Close navigation menu' : 'Open navigation menu');
             });
@@ -266,6 +268,7 @@
                 const toggle = document.getElementById('mobile-toggle');
                 if (navLinks?.classList.contains('mobile-open')) {
                     navLinks.classList.remove('mobile-open');
+                    document.getElementById('navbar')?.classList.remove('menu-open');
                     if (toggle) { toggle.classList.remove('active'); toggle.setAttribute('aria-expanded', 'false'); toggle.focus(); }
                 }
             }
