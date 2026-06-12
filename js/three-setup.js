@@ -252,9 +252,13 @@
 
             const t = Math.random();
             const c = new THREE.Color();
-            // Mix between warm whites and golds
-            if (t < 0.6) c.lerpColors(new THREE.Color(0xffffff), pal.primary, t*1.5);
-            else         c.lerpColors(pal.primary, pal.secondary, (t-0.6)*2.5);
+            if (currentTheme === 'dark') {
+                if (t < 0.6) c.lerpColors(new THREE.Color(0xffffff), pal.primary, t*1.5);
+                else         c.lerpColors(pal.primary, pal.secondary, (t-0.6)*2.5);
+            } else {
+                if (t < 0.5) c.lerpColors(pal.primary, pal.tertiary, t*2.0);
+                else         c.lerpColors(pal.tertiary, pal.secondary, (t-0.5)*2.0);
+            }
             col[i3] = c.r; col[i3+1] = c.g; col[i3+2] = c.b;
 
             // Varying size for depth of field illusion
@@ -272,7 +276,8 @@
         const mat = new THREE.ShaderMaterial({
             vertexShader: particleVert,
             fragmentShader: particleFrag,
-            transparent: true, depthWrite: false, blending: THREE.AdditiveBlending,
+            transparent: true, depthWrite: false, 
+            blending: currentTheme === 'dark' ? THREE.AdditiveBlending : THREE.NormalBlending,
         });
 
         particles = new THREE.Points(geo, mat);
@@ -296,14 +301,14 @@
             metalness: 0.1, 
             roughness: 0.8, // frosted look
             transparent: true, 
-            opacity: 0.15, 
+            opacity: currentTheme === 'dark' ? 0.15 : 0.4, 
             wireframe: true, 
             emissive: pal.primary, 
-            emissiveIntensity: 0.6 // elegant warm glow
+            emissiveIntensity: currentTheme === 'dark' ? 0.6 : 1.0 // elegant warm glow
         });
         const m2 = m1.clone(); 
         m2.emissive = pal.secondary; 
-        m2.emissiveIntensity = 0.4;
+        m2.emissiveIntensity = currentTheme === 'dark' ? 0.4 : 0.8;
 
         for (let i = 0; i < NUM_GEOMETRIES; i++) {
             const mat = (i % 2 === 0 ? m1 : m2).clone();
@@ -344,14 +349,22 @@
 
         // Recolor particles
         if (particles) {
+            particles.material.blending = theme === 'dark' ? THREE.AdditiveBlending : THREE.NormalBlending;
+            particles.material.needsUpdate = true;
+            
             const colAttr = particles.geometry.attributes.customColor;
             const arr = colAttr.array;
             for (let i = 0; i < PARTICLE_COUNT; i++) {
                 const i3 = i * 3;
                 const t = Math.random();
                 const c = new THREE.Color();
-                if (t < 0.6) c.lerpColors(new THREE.Color(0xffffff), pal.primary, t*1.5);
-                else         c.lerpColors(pal.primary, pal.secondary, (t-0.6)*2.5);
+                if (theme === 'dark') {
+                    if (t < 0.6) c.lerpColors(new THREE.Color(0xffffff), pal.primary, t*1.5);
+                    else         c.lerpColors(pal.primary, pal.secondary, (t-0.6)*2.5);
+                } else {
+                    if (t < 0.5) c.lerpColors(pal.primary, pal.tertiary, t*2.0);
+                    else         c.lerpColors(pal.tertiary, pal.secondary, (t-0.5)*2.0);
+                }
                 arr[i3] = c.r; arr[i3+1] = c.g; arr[i3+2] = c.b;
             }
             colAttr.needsUpdate = true;
@@ -362,6 +375,9 @@
             if (mesh.material) {
                 const isEven = geometries.indexOf(mesh) % 2 === 0;
                 mesh.material.emissive = isEven ? pal.primary : pal.secondary;
+                mesh.material.opacity = theme === 'dark' ? 0.15 : 0.4;
+                mesh.material.emissiveIntensity = theme === 'dark' ? 0.6 : 1.0;
+                mesh.material.needsUpdate = true;
             }
         }
 
