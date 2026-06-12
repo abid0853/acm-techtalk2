@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ACM TechTalk 2026 - Flagship Technical Event by ACM AJCE">
+    <title>ACM TechTalk 2026 | AJCE</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
+    <div class="cursor-spotlight"></div>
+    <div class="scroll-progress"></div>
+    
+    <div class="loading-screen" id="loader">
+        <div class="loader-panel top"></div>
+        <div class="loader-panel bottom"></div>
+        <div class="loader-content">
+            <div class="loader-text-wrapper">
+                <span class="loader-text">SYSTEM INITIATION</span>
+                <span class="loader-text accent">TECHTALK 2026</span>
+            </div>
+            <div class="loader-progress"></div>
+        </div>
+    </div>
+
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#home" class="brand">TechTalk<span class="accent">2026</span></a>
+            
+            <div class="nav-menu">
+                <ul class="nav-links">
+                    <li><a href="#about" class="nav-item">About</a></li>
+                    <li><a href="#speakers" class="nav-item">Speakers</a></li>
+                    <li><a href="#schedule" class="nav-item">Schedule</a></li>
+                    <li><a href="#faq" class="nav-item">FAQ</a></li>
+                </ul>
+                
+                <div class="nav-actions">
+                    <a href="#register" class="btn btn-primary btn-sm magnetic-btn">Register</a>
+                </div>
+            </div>
+
+            <button class="mobile-toggle" aria-label="Toggle Menu" aria-expanded="false">
+                <span class="hamburger"></span>
+            </button>
+        </div>
+    </nav>
+
+    <main id="main-content">
+        <section class="hero" id="home">
+            <div class="bg-orbs">
+                <div class="orb orb-1"></div>
+                <div class="orb orb-2"></div>
+            </div>
+            <div class="container hero-content">
+                <div class="badge hero-elem">ACM Amal Jyothi College of Engineering</div>
+                
+                <h1 class="hero-title">
+                    <div class="split-line hero-elem">Future of</div>
+                    <div class="split-line gradient-text hero-elem">Technology</div>
+                </h1>
+                
+                <p class="hero-subtitle hero-elem">Join the brightest minds for a day of innovation, networking, and deep-dive technical sessions.</p>
+                
+                <div class="hero-meta hero-elem">
+                    <div class="meta-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                        <span>Oct 24, 2026</span>
+                    </div>
+                    <div class="meta-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                        <span>AJCE Auditorium</span>
+                    </div>
+                </div>
+
+                <div class="countdown hero-elem" id="countdown">
+                    <div class="cd-box"><span id="days">00</span><label>Days</label></div>
+                    <div class="cd-box"><span id="hours">00</span><label>Hours</label></div>
+                    <div class="cd-box"><span id="minutes">00</span><label>Mins</label></div>
+                    <div class="cd-box"><span id="seconds">00</span><label>Secs</label></div>
+                </div>
+
+                <div class="hero-actions hero-elem">
+                    <a href="#register" class="btn btn-primary btn-large magnetic-btn">Claim Your Ticket</a>
+                    <a href="#schedule" class="btn btn-secondary btn-large magnetic-btn">View Schedule</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="stats section-padding" id="stats">
+            <div class="container stats-grid">
+                <div class="stat-card glass-panel">
+                    <h3 class="stat-number" data-target="500">0</h3>
+                    <p>Attendees</p>
+                </div>
+                <div class="stat-card glass-panel">
+                    <h3 class="stat-number" data-target="12">0</h3>
+                    <p>Speakers</p>
+                </div>
+                <div class="stat-card glass-panel">
+                    <h3 class="stat-number" data-target="8">0</h3>
+                    <p>Workshops</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="about section-padding" id="about">
+            <div class="container">
+                <div class="section-header reveal-up">
+                    <h2>About the Event</h2>
+                    <p>Elevating the standard of technical discourse.</p>
+                </div>
+                <div class="about-content grid-2">
+                    <div class="about-text reveal-up">
+                        <p class="lead-text">ACM TechTalk 2026 is the premier technology conference in Kerala, designed to bridge the gap between academia and industry. Hosted by the vibrant ACM student chapter at Amal Jyothi College of Engineering.</p>
+                        
+                        <div class="feature-grid">
+                            <div class="feature-item glass-panel">
+                                <div class="feature-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                </div>
+                                <span>Cutting-edge tech panels</span>
+                            </div>
+                            <div class="feature-item glass-panel">
+                                <div class="feature-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
+                                </div>
+                                <span>Hands-on workshops</span>
+                            </div>
+                            <div class="feature-item glass-panel">
+                                <div class="feature-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                                </div>
+                                <span>Elite networking events</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="about-visual reveal-up">
+                        <div class="visual-composition">
+                            <div class="glass-card card-1">
+                                <h3>Innovation</h3>
+                                <div class="card-line"></div>
+                            </div>
+                            <div class="glass-card card-2">
+                                <h3>Technology</h3>
+                                <div class="card-line accent-line"></div>
+                            </div>
+                            <div class="visual-glow"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="speakers section-padding" id="speakers">
+            <div class="container">
+                <div class="section-header reveal-up">
+                    <h2>Keynote Speakers</h2>
+                    <p>Learn from industry pioneers.</p>
+                </div>
+                <div class="speaker-grid">
+                    <div class="speaker-card glass-panel">
+                        <div class="speaker-img"></div>
+                        <div class="speaker-info">
+                            <h3>Dr. Sarah Chen</h3>
+                            <p class="designation">AI Research Director, TechCorp</p>
+                        </div>
+                    </div>
+                    <div class="speaker-card glass-panel">
+                        <div class="speaker-img"></div>
+                        <div class="speaker-info">
+                            <h3>James Wilson</h3>
+                            <p class="designation">Principal Architect, CloudSync</p>
+                        </div>
+                    </div>
+                    <div class="speaker-card glass-panel">
+                        <div class="speaker-img"></div>
+                        <div class="speaker-info">
+                            <h3>Priya Sharma</h3>
+                            <p class="designation">VP of Engineering, Innovate.io</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="schedule section-padding" id="schedule">
+            <div class="container">
+                <div class="section-header reveal-up">
+                    <h2>Event Timeline</h2>
+                    <p>A day packed with insights.</p>
+                </div>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="time">09:00 AM</div>
+                        <div class="content glass-panel">
+                            <h3>Registration & Breakfast</h3>
+                            <p>Check-in and collect your swags.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="time">10:00 AM</div>
+                        <div class="content glass-panel">
+                            <h3>Opening Keynote</h3>
+                            <p>The Future of AI Integration by Dr. Sarah Chen.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="time">11:30 AM</div>
+                        <div class="content glass-panel">
+                            <h3>Technical Workshops</h3>
+                            <p>Parallel tracks on Cloud Architecture and Web3.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="faq section-padding" id="faq">
+            <div class="container">
+                <div class="section-header reveal-up">
+                    <h2>Frequently Asked Questions</h2>
+                </div>
+                <div class="accordion">
+                    <div class="accordion-item glass-panel reveal-up">
+                        <button class="accordion-header" aria-expanded="false">Who can attend?</button>
+                        <div class="accordion-content"><p>Any student or professional interested in technology can attend. Special discounts apply for ACM members.</p></div>
+                    </div>
+                    <div class="accordion-item glass-panel reveal-up">
+                        <button class="accordion-header" aria-expanded="false">Are laptops required?</button>
+                        <div class="accordion-content"><p>Laptops are recommended if you plan to participate in the hands-on workshops.</p></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="contact section-padding" id="contact">
+            <div class="container">
+                <h2 class="contact-title reveal-up">Contact Us</h2>
+                
+                <div class="contact-grid reveal-up">
+                    <div class="contact-col acm-brand-col">
+                        <img src="acmlogo.png" alt="ACM AJCE Student Chapter Logo" class="contact-logo">
+                        <p class="contact-info">
+                            E-mail: <a href="mailto:acmajce@amaljyothi.ac.in">acmajce@amaljyothi.ac.in</a><br>
+                            Phone: <a href="tel:+919946847530">+91 99468 47530</a>
+                        </p>
+                    </div>
+
+                    <div class="contact-col socials-col">
+                        <h3 class="socials-title">Our Socials</h3>
+                        <div class="social-icons">
+                            <a href="https://www.instagram.com/acm_ajce/" target="_blank" aria-label="Instagram" class="social-icon magnetic-btn">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                            </a>
+                            <a href="https://www.linkedin.com/company/acm-ajce-student-chapter/mycompany" target="_blank" aria-label="LinkedIn" class="social-icon magnetic-btn">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="contact-col dept-col">
+                        <img src="cselogo.png" alt="CSE Department Logo" class="contact-logo">
+                        <p class="contact-info dept-text">
+                            Dept. of Computer Science<br>
+                            Amal Jyothi College of Engineering ( Autonomous )<br>
+                            Kanjirapally, Kottayam District, Kerala<br>
+                            Phone: <a href="tel:+918547888365">+91 85478 88365</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="neon-footer">
+        <div class="container footer-content">
+            <p>Developed By - Lead Webmaster (ACM AJCE)</p>
+            <p>Copyright &copy; 2026 All rights reserved | ACM AJCE</p>
+        </div>
+    </footer>
+
+    <button id="theme-toggle-fab" class="theme-fab" aria-label="Toggle Theme">
+        <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+        <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+    </button>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <script src="js/theme.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
