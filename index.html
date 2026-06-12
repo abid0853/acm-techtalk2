@@ -25,33 +25,15 @@
     <!-- ═══════════════════ LOADING SCREEN ═══════════════════ -->
     <div id="loader" class="loader" role="status" aria-live="polite" aria-label="Loading application">
         <div class="loader-inner">
-            <div class="loader-glyph">
-                <svg viewBox="0 0 100 100" class="loader-ring" aria-hidden="true">
-                    <circle cx="50" cy="50" r="45" />
-                </svg>
-                <span class="loader-logo" aria-hidden="true">⬡</span>
-            </div>
-            <div class="loader-text">
-                <span class="loader-label">INITIALIZING</span>
-                <span class="loader-title">TECHTALK <span class="accent">2026</span></span>
-            </div>
-            <div class="loader-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
-                <div class="loader-bar-fill" id="loader-progress"></div>
-            </div>
+            <div class="standard-spinner"></div>
+            <div class="loader-text-standard">Loading...</div>
         </div>
     </div>
 
     <!-- ═══════════════════ THREE.JS CANVAS ═══════════════════ -->
     <canvas id="webgl-canvas" aria-hidden="true"></canvas>
 
-    <!-- ═══════════════════ SCROLL CONTAINER ═══════════════════ -->
-    <div id="scroll-container" aria-hidden="true">
-        <div class="scroll-spacer" data-section="hero"></div>
-        <div class="scroll-spacer" data-section="about"></div>
-        <div class="scroll-spacer" data-section="speakers"></div>
-        <div class="scroll-spacer" data-section="schedule"></div>
-        <div class="scroll-spacer" data-section="contact"></div>
-    </div>
+
 
     <!-- ═══════════════════ NAVIGATION ═══════════════════ -->
     <nav id="navbar" class="navbar" role="navigation" aria-label="Primary navigation">
@@ -116,11 +98,11 @@
             aria-label="Contact section"><span>05</span></button>
     </div>
 
-    <!-- ═══════════════════ DOM OVERLAY SECTIONS ═══════════════════ -->
-    <main id="main-content" class="dom-layer">
+    <!-- ═══════════════════ MAIN CONTENT ═══════════════════ -->
+    <main id="main-content">
 
         <!-- ——— HERO ——— -->
-        <section id="section-hero" class="overlay-section hero-section active" aria-label="Hero — ACM TechTalk 2026">
+        <section id="section-hero" class="hero-section" aria-label="Hero — ACM TechTalk 2026">
             <div class="section-inner hero-inner"><br>
                 <h1 class="hero-title">
                     <div class="title-line"><span>ACM TechTalk</span></div>
@@ -178,7 +160,7 @@
         </section>
 
         <!-- ——— ABOUT ——— -->
-        <section id="section-about" class="overlay-section about-section" aria-label="About the Event">
+        <section id="section-about" class="about-section" aria-label="About the Event">
             <div class="section-inner">
                 <div class="section-tag" aria-hidden="true">// ABOUT THE EVENT</div>
                 <h2 class="section-title">Where <span class="gradient-text">Innovation</span> Meets Gravity</h2>
@@ -225,7 +207,7 @@
         </section>
 
         <!-- ——— SPEAKERS ——— -->
-        <section id="section-speakers" class="overlay-section speakers-section" aria-label="Keynote Speakers">
+        <section id="section-speakers" class="speakers-section" aria-label="Keynote Speakers">
             <div class="section-inner">
                 <div class="section-tag" aria-hidden="true">// KEYNOTE SPEAKERS</div>
                 <h2 class="section-title">Learn from the <span class="gradient-text">Pioneers</span></h2>
@@ -265,7 +247,7 @@
         </section>
 
         <!-- ——— SCHEDULE ——— -->
-        <section id="section-schedule" class="overlay-section schedule-section" aria-label="Event Schedule">
+        <section id="section-schedule" class="schedule-section" aria-label="Event Schedule">
             <div class="section-inner">
                 <div class="section-tag" aria-hidden="true">// EVENT TIMELINE</div>
                 <h2 class="section-title">A Day of <span class="gradient-text">Breakthroughs</span></h2>
@@ -323,7 +305,7 @@
         </section>
 
         <!-- ——— CONTACT ——— -->
-        <section id="section-contact" class="overlay-section contact-section" aria-label="Contact and Registration">
+        <section id="section-contact" class="contact-section" aria-label="Contact and Registration">
             <div class="section-inner">
                 <div class="section-tag" aria-hidden="true">// GET IN TOUCH</div>
                 <h2 class="section-title">Ready to <span class="gradient-text">Defy Gravity</span>?</h2>
