@@ -13,6 +13,27 @@
     overflow-x: hidden;
 }
 
+/* ════════════ REGISTER PANEL STACKING ════════════ */
+.register-wrapper .panel {
+    position: relative;
+    background: var(--panel-bg);
+    box-shadow: 0 -30px 80px var(--shadow-color-main);
+    transition: background-color 0.3s ease;
+}
+
+.register-wrapper .panel:nth-child(1) {
+    z-index: 10;
+    box-shadow: none;
+}
+
+.register-wrapper .panel:nth-child(2) {
+    z-index: 20;
+}
+
+.register-wrapper .panel:nth-child(3) {
+    z-index: 30;
+}
+
 /* ════════════ HERO BANNER ════════════ */
 .reg-hero {
     min-height: 55vh;

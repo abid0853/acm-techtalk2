@@ -226,19 +226,25 @@ html {
 .mobile-menu-inner {
     display: flex;
     flex-direction: column;
-    gap: clamp(1rem, 3vh, 3rem);
+    gap: clamp(0.8rem, 2.5vh, 2.5rem);
     text-align: center;
+    padding: clamp(4rem, 10vh, 6rem) clamp(1.5rem, 5vw, 3rem);
+    max-height: 100vh;
+    max-width: 100vw;
+    overflow-y: auto;
+    box-sizing: border-box;
 }
 
 .mobile-link {
     font-family: var(--font-heading);
-    font-size: clamp(2.5rem, 8vw, 5rem);
+    font-size: clamp(1.8rem, 6vw, 4rem);
     font-weight: 900;
     color: #000;
     text-decoration: none;
-    line-height: 0.9;
+    line-height: 1.1;
     text-transform: uppercase;
     transition: color 0.3s;
+    white-space: nowrap;
 }
 
 .mobile-link:hover {

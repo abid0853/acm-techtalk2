@@ -182,7 +182,25 @@ function initAnimations() {
 
 // ════════════ SCROLL ANIMATIONS ════════════ //
 function initScrollAnimations() {
-    // Brutal Titles Reveal
+    // 1. Layer-by-Layer Stacking (ALL screen sizes)
+    const panels = gsap.utils.toArray('.panel');
+    panels.forEach((panel, i) => {
+        if (i === panels.length - 1) return; // Don't pin the final section
+
+        const isTall = panel.offsetHeight > window.innerHeight;
+
+        ScrollTrigger.create({
+            trigger: panel,
+            start: isTall ? "bottom bottom" : "top top",
+            end: () => "+=" + window.innerHeight,
+            pin: true,
+            pinSpacing: false,
+            invalidateOnRefresh: true,
+            id: `reg-panel-${i}`
+        });
+    });
+
+    // 2. Brutal Titles Reveal
     const titles = gsap.utils.toArray('.brutal-title');
     titles.forEach(title => {
         gsap.fromTo(title,

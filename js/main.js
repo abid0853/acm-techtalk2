@@ -198,27 +198,21 @@ function initAnimations() {
 
 // ════════════ SCROLL ANIMATIONS ════════════ //
 function initScrollAnimations() {
-    
-    // 1. Responsive Layer-by-Layer Stacking (MatchMedia)
-    let mm = gsap.matchMedia();
+    // 1. Layer-by-Layer Stacking (ALL screen sizes)
+    const panels = gsap.utils.toArray('.panel');
+    panels.forEach((panel, i) => {
+        if (i === panels.length - 1) return; // Don't pin the final section
+        
+        const isTall = panel.offsetHeight > window.innerHeight;
 
-    // Only apply pinning for Desktop/Tablet (screens >= 769px)
-    mm.add("(min-width: 769px)", () => {
-        const panels = gsap.utils.toArray('.panel');
-        panels.forEach((panel, i) => {
-            if (i === panels.length - 1) return; // Don't pin the final section
-            
-            const isTall = panel.offsetHeight > window.innerHeight;
-
-            ScrollTrigger.create({
-                trigger: panel,
-                start: isTall ? "bottom bottom" : "top top",
-                end: () => "+=" + window.innerHeight,
-                pin: true,
-                pinSpacing: false, // MANDATORY for strict layer-by-layer overlap
-                invalidateOnRefresh: true, // Crucial for responsive resizing
-                id: `panel-${i}`
-            });
+        ScrollTrigger.create({
+            trigger: panel,
+            start: isTall ? "bottom bottom" : "top top",
+            end: () => "+=" + window.innerHeight,
+            pin: true,
+            pinSpacing: false, // MANDATORY for strict layer-by-layer overlap
+            invalidateOnRefresh: true, // Crucial for responsive resizing
+            id: `panel-${i}`
         });
     });
 
