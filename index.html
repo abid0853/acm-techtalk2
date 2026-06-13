@@ -1,389 +1,221 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="light">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="ACM TechTalk 2026 — An immersive anti-gravity experience. The flagship technical event by ACM AJCE Student Chapter.">
-    <meta name="theme-color" content="#05050a">
-    <title>ACM TechTalk 2026 </title>
+    <meta name="description" content="ACM TechTalk 2026 — A Neo-Brutalist Experience">
+    <title>ACM TechTalk 2026 | DEFY GRAVITY</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Cormorant+Garamond:wght@400;500;600&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;900&family=Syne:wght@700;800&display=swap"
         rel="stylesheet">
 
     <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-    <!-- ═══════════════════ A11Y: Skip to Main Content ═══════════════════ -->
-    <a href="#main-content" class="skip-link" id="skip-link">Skip to main content</a>
+    <div class="custom-cursor"></div>
 
-    <!-- ═══════════════════ LOADING SCREEN ═══════════════════ -->
-    <div id="loader" class="loader" role="status" aria-live="polite" aria-label="Loading application">
-        <div class="loader-inner">
-            <div class="standard-spinner"></div>
-            <div class="loader-text-standard">Loading...</div>
-        </div>
+    <div class="loader-overlay">
+        <div class="loader-counter">0%</div>
+        <div class="loader-wipe"></div>
     </div>
 
-    <!-- ═══════════════════ THREE.JS CANVAS ═══════════════════ -->
-    <canvas id="webgl-canvas" aria-hidden="true"></canvas>
+    <!-- 1. Background strictly fixed at -1 -->
+    <canvas id="webgl-canvas"></canvas>
 
-
-
-    <!-- ═══════════════════ NAVIGATION ═══════════════════ -->
-    <nav id="navbar" class="navbar" role="navigation" aria-label="Primary navigation">
-        <div class="nav-inner">
-            <a href="#" class="brand" id="nav-brand" aria-label="TechTalk 2026 — Home">
-                <span class="brand-icon" aria-hidden="true">⬡</span>
-                TechTalk<span class="accent">2026</span>
-            </a>
-            <ul class="nav-links" id="nav-links" role="menubar">
-                <li role="none"><a href="#" data-target="hero" class="nav-link active" role="menuitem"
-                        aria-current="true">Home</a></li>
-                <li role="none"><a href="#" data-target="about" class="nav-link" role="menuitem">About</a></li>
-                <li role="none"><a href="#" data-target="speakers" class="nav-link" role="menuitem">Speakers</a></li>
-                <li role="none"><a href="#" data-target="schedule" class="nav-link" role="menuitem">Schedule</a></li>
-                <li role="none"><a href="#" data-target="contact" class="nav-link" role="menuitem">Contact</a></li>
-            </ul>
-            <div class="nav-right">
-                <!-- Theme Toggle -->
-                <button id="theme-toggle" class="theme-toggle" aria-label="Switch to light mode" title="Toggle theme">
-                    <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                        <circle cx="12" cy="12" r="5" />
-                        <line x1="12" y1="1" x2="12" y2="3" />
-                        <line x1="12" y1="21" x2="12" y2="23" />
-                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
-                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
-                        <line x1="1" y1="12" x2="3" y2="12" />
-                        <line x1="21" y1="12" x2="23" y2="12" />
-                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
-                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
-                    </svg>
-                    <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
-                    </svg>
-                </button>
-                <a href="#" data-target="contact" class="btn-register" id="nav-register"
-                    aria-label="Register for TechTalk 2026">Register</a>
-            </div>
-            <button class="mobile-toggle" id="mobile-toggle" aria-label="Open navigation menu" aria-expanded="false"
-                aria-controls="nav-links">
-                <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
+    <!-- 2. Nav elevated to 99999 -->
+    <nav class="brutal-nav">
+        <div class="nav-brand" data-hover>TECHTALK<span class="highlight">26</span></div>
+        <div class="nav-links">
+            <a href="#about" data-hover>ABOUT</a>
+            <a href="#speakers" data-hover>SPEAKERS</a>
+            <a href="#schedule" data-hover>SCHEDULE</a>
+        </div>
+        <div class="nav-actions">
+            <!-- Default Light, switch to Dark -->
+            <button id="theme-toggle" class="brutal-btn-icon" aria-label="Toggle Theme" data-hover
+                style="font-size: 1rem;">
+                <span class="icon-light">☾</span>
+                <span class="icon-dark">☀</span>
             </button>
+            <a href="#contact" class="nav-register brutal-btn-small" data-hover>REGISTER</a>
+            <button id="mobile-menu-btn" class="brutal-btn-icon mobile-only" aria-label="Menu" data-hover
+                style="font-size: 1rem;">☰</button>
         </div>
     </nav>
 
-    <!-- ═══════════════════ SCROLL PROGRESS ═══════════════════ -->
-    <div class="scroll-progress" id="scroll-progress" role="progressbar" aria-valuemin="0" aria-valuemax="100"
-        aria-valuenow="0" aria-label="Page scroll progress"></div>
-
-    <!-- ═══════════════════ SECTION DOTS ═══════════════════ -->
-    <div class="section-dots" id="section-dots" role="tablist" aria-label="Page sections">
-        <button data-target="hero" class="dot active" role="tab" aria-selected="true"
-            aria-label="Hero section"><span>01</span></button>
-        <button data-target="about" class="dot" role="tab" aria-selected="false"
-            aria-label="About section"><span>02</span></button>
-        <button data-target="speakers" class="dot" role="tab" aria-selected="false"
-            aria-label="Speakers section"><span>03</span></button>
-        <button data-target="schedule" class="dot" role="tab" aria-selected="false"
-            aria-label="Schedule section"><span>04</span></button>
-        <button data-target="contact" class="dot" role="tab" aria-selected="false"
-            aria-label="Contact section"><span>05</span></button>
+    <!-- 3. Mobile menu overlay at 100000 -->
+    <div class="mobile-menu-overlay" id="mobile-menu">
+        <div class="mobile-menu-inner">
+            <button id="mobile-close-btn" class="brutal-btn-icon" aria-label="Close Menu">CLOSE</button>
+            <a href="#about" class="mobile-link">ABOUT</a>
+            <a href="#speakers" class="mobile-link">SPEAKERS</a>
+            <a href="#schedule" class="mobile-link">SCHEDULE</a>
+            <a href="#contact" class="mobile-link highlight">REGISTER</a>
+        </div>
     </div>
 
-    <!-- ═══════════════════ MAIN CONTENT ═══════════════════ -->
-    <main id="main-content">
-
-        <!-- ——— HERO ——— -->
-        <section id="section-hero" class="hero-section" aria-label="Hero — ACM TechTalk 2026">
-            <div class="section-inner hero-inner"><br>
-                <h1 class="hero-title">
-                    <div class="title-line"><span>ACM TechTalk</span></div>
-                    <div class="title-line"><span class="gradient-text">2026</span></div>
+    <!-- Elevated Wrapper -->
+    <main class="main-wrapper">
+        <!-- Panel 1 -->
+        <section class="panel panel-hero" id="hero">
+            <div class="hero-content">
+                <h1 class="hero-title" data-hover>
+                    <div class="line"><span>ACM</span></div>
+                    <div class="line"><span>TECHTALK</span></div>
+                    <div class="line"><span class="highlight">2026</span></div>
                 </h1>
-                <p class="hero-subtitle">Defy Gravity. An immersive journey into the future of technology.<br>One day.
-                    Infinite possibilities.</p>
-                <div class="hero-meta">
-                    <div class="meta-chip">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2" aria-hidden="true">
-                            <rect x="3" y="4" width="18" height="18" rx="2" />
-                            <line x1="16" y1="2" x2="16" y2="6" />
-                            <line x1="8" y1="2" x2="8" y2="6" />
-                            <line x1="3" y1="10" x2="21" y2="10" />
-                        </svg>
-                        <span>Oct 24, 2026</span>
+                <div class="hero-sub clip-line">
+                    <span>DEFY GRAVITY. ONE DAY. INFINITE POSSIBILITIES.</span>
+                </div>
+
+                <!-- NEW EVENT DETAILS -->
+                <div class="hero-details">
+                    <div class="detail-box brutal-box-small" data-hover>OCT 24, 2026 | 09:00 AM</div>
+                    <div class="detail-box brutal-box-small" data-hover>VENUE: AJCE AUDITORIUM</div>
+                </div>
+            </div>
+            <div class="scroll-indicator">
+                <div class="arrow-down">↓</div>
+            </div>
+        </section>
+
+        <!-- Panel 2 -->
+        <section class="panel panel-about" id="about">
+            <div class="panel-inner">
+                <h2 class="brutal-title" data-hover>NO LIMITS.</h2>
+                <div class="about-grid">
+                    <div class="about-text">
+                        <div class="clip-line"><span>ACM TechTalk 2026 is</span></div>
+                        <div class="clip-line"><span>the premier technology</span></div>
+                        <div class="clip-line"><span>clash in Kerala.</span></div>
+                        <br>
+                        <div class="clip-line"><span>Bridging academia and</span></div>
+                        <div class="clip-line"><span>the brutal reality of</span></div>
+                        <div class="clip-line"><span>industry innovation.</span></div>
                     </div>
-                    <div class="meta-chip">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2" aria-hidden="true">
-                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-                            <circle cx="12" cy="10" r="3" />
-                        </svg>
-                        <span>AJCE Auditorium</span>
-                    </div>
-                </div>
-                <div class="hero-countdown" id="countdown" aria-label="Countdown to event">
-                    <div class="cd-unit"><span id="cd-days" class="cd-num" aria-label="Days remaining">00</span><span
-                            class="cd-label">Days</span></div>
-                    <div class="cd-sep" aria-hidden="true">:</div>
-                    <div class="cd-unit"><span id="cd-hours" class="cd-num" aria-label="Hours remaining">00</span><span
-                            class="cd-label">Hours</span></div>
-                    <div class="cd-sep" aria-hidden="true">:</div>
-                    <div class="cd-unit"><span id="cd-mins" class="cd-num" aria-label="Minutes remaining">00</span><span
-                            class="cd-label">Mins</span></div>
-                    <div class="cd-sep" aria-hidden="true">:</div>
-                    <div class="cd-unit"><span id="cd-secs" class="cd-num" aria-label="Seconds remaining">00</span><span
-                            class="cd-label">Secs</span></div>
-                </div>
-                <div class="hero-actions">
-                    <a href="#" data-target="contact" class="btn btn-primary" id="hero-register-btn">Register Now</a>
-                    <a href="#" data-target="schedule" class="btn btn-ghost" id="hero-schedule-btn">View Schedule</a>
-                </div>
-                <div class="scroll-hint" id="scroll-hint" aria-hidden="true">
-                    <span>Scroll to explore</span>
-                    <div class="scroll-hint-arrow">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2">
-                            <path d="M12 5v14M19 12l-7 7-7-7" />
-                        </svg>
+                    <div class="about-stats brutal-box" data-hover>
+                        <div class="stat"><span class="stat-num">500+</span><span class="stat-label">ATTENDEES</span>
+                        </div>
+                        <div class="stat"><span class="stat-num">12</span><span class="stat-label">SPEAKERS</span></div>
+                        <div class="stat"><span class="stat-num">08</span><span class="stat-label">WORKSHOPS</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- ——— ABOUT ——— -->
-        <section id="section-about" class="about-section" aria-label="About the Event">
-            <div class="section-inner">
-                <h2 class="section-title">Where <span class="gradient-text">Innovation</span> Meets Gravity</h2>
-                <p class="section-desc">ACM TechTalk 2026 is the premier technology conference in Kerala, designed to
-                    bridge the gap between academia and industry. Hosted by the vibrant ACM student chapter at Amal
-                    Jyothi College of Engineering, it brings together 500+ attendees for a day of cutting-edge panels,
-                    hands-on workshops, and elite networking.</p>
-                <div class="about-stats">
-                    <div class="stat-card glass-card">
-                        <span class="stat-number" data-count="500">0</span>
-                        <span class="stat-label">Attendees</span>
-                    </div>
-                    <div class="stat-card glass-card">
-                        <span class="stat-number" data-count="12">0</span>
-                        <span class="stat-label">Speakers</span>
-                    </div>
-                    <div class="stat-card glass-card">
-                        <span class="stat-number" data-count="8">0</span>
-                        <span class="stat-label">Workshops</span>
-                    </div>
-                    <div class="stat-card glass-card">
-                        <span class="stat-number" data-count="1">0</span>
-                        <span class="stat-label">Epic Day</span>
-                    </div>
-                </div>
-                <div class="about-features">
-                    <div class="feature glass-card">
-                        <div class="feature-icon" aria-hidden="true">⚡</div>
-                        <h3>Cutting-edge Panels</h3>
-                        <p>Deep-dive sessions on AI, Cloud, Web3 and beyond.</p>
-                    </div>
-                    <div class="feature glass-card">
-                        <div class="feature-icon" aria-hidden="true">🔬</div>
-                        <h3>Hands-on Workshops</h3>
-                        <p>Build real projects with industry mentors.</p>
-                    </div>
-                    <div class="feature glass-card">
-                        <div class="feature-icon" aria-hidden="true">🌐</div>
-                        <h3>Elite Networking</h3>
-                        <p>Connect with pioneers shaping the future.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ——— SPEAKERS ——— -->
-        <section id="section-speakers" class="speakers-section" aria-label="Keynote Speakers">
-            <div class="section-inner">
-                <h2 class="section-title">Learn from the <span class="gradient-text">Pioneers</span></h2>
+        <!-- Panel 3 -->
+        <section class="panel panel-speakers" id="speakers">
+            <div class="panel-inner">
+                <h2 class="brutal-title" data-hover>THE PIONEERS.</h2>
                 <div class="speakers-grid">
-                    <article class="speaker-card glass-card" id="speaker-1" aria-label="Speaker: Dr. Sarah Chen">
-                        <div class="speaker-avatar">
-                            <div class="avatar-glow" aria-hidden="true"></div>
-                            <div class="avatar-initials" aria-hidden="true">SC</div>
+                    <div class="speaker-card brutal-card" data-hover>
+                        <div class="speaker-img-wrapper">
+                            <img src="img/sundar.png" class="speaker-img parallax-img" alt="Dr. Sarah Chen">
                         </div>
-                        <h3>Dr. Sarah Chen</h3>
-                        <p class="speaker-role">AI Research Director</p>
-                        <p class="speaker-org">TechCorp</p>
-                        <div class="speaker-topic"><span class="topic-tag">The Future of AI Integration</span></div>
-                    </article>
-                    <article class="speaker-card glass-card" id="speaker-2" aria-label="Speaker: James Wilson">
-                        <div class="speaker-avatar">
-                            <div class="avatar-glow" aria-hidden="true"></div>
-                            <div class="avatar-initials" aria-hidden="true">JW</div>
+                        <h3 class="speaker-name">Sundar Pichai</h3>
+                        <p class="speaker-role">CEO Of Google</p>
+                    </div>
+                    <div class="speaker-card brutal-card" data-hover>
+                        <div class="speaker-img-wrapper">
+                            <img src="img/anoop.png" class="speaker-img parallax-img" alt="James Wilson">
                         </div>
-                        <h3>James Wilson</h3>
-                        <p class="speaker-role">Principal Architect</p>
-                        <p class="speaker-org">CloudSync</p>
-                        <div class="speaker-topic"><span class="topic-tag">Scaling Cloud Infrastructure</span></div>
-                    </article>
-                    <article class="speaker-card glass-card" id="speaker-3" aria-label="Speaker: Priya Sharma">
-                        <div class="speaker-avatar">
-                            <div class="avatar-glow" aria-hidden="true"></div>
-                            <div class="avatar-initials" aria-hidden="true">PS</div>
+                        <h3 class="speaker-name">Anoop P. Ambika</h3>
+                        <p class="speaker-role">CEO Of Kerala Startup Mission</p>
+                    </div>
+                    <div class="speaker-card brutal-card" data-hover>
+                        <div class="speaker-img-wrapper">
+                            <img src="img/vicki.png" class="speaker-img parallax-img" alt="Priya Sharma">
                         </div>
-                        <h3>Priya Sharma</h3>
-                        <p class="speaker-role">VP of Engineering</p>
-                        <p class="speaker-org">Innovate.io</p>
-                        <div class="speaker-topic"><span class="topic-tag">Web3 &amp; Decentralized Systems</span></div>
-                    </article>
+                        <h3 class="speaker-name">Vicki L. Hanson</h3>
+                        <p class="speaker-role">CEO Of ACM</p>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- ——— SCHEDULE ——— -->
-        <section id="section-schedule" class="schedule-section" aria-label="Event Schedule">
-            <div class="section-inner">
-                <h2 class="section-title">A Day of <span class="gradient-text">Breakthroughs</span></h2>
-                <div class="timeline" role="list" aria-label="Event timeline">
-                    <div class="timeline-item glass-card" id="tl-1" role="listitem">
-                        <div class="tl-time">09:00 AM</div>
-                        <div class="tl-dot" aria-hidden="true"></div>
-                        <div class="tl-content">
-                            <h3>Registration &amp; Breakfast</h3>
-                            <p>Check-in, collect your swag kit, and fuel up.</p>
+        <!-- Panel 4 -->
+        <section class="panel panel-schedule" id="schedule">
+            <div class="panel-inner">
+                <h2 class="brutal-title" data-hover>THE ASSAULT.</h2>
+                <div class="schedule-list">
+                    <div class="schedule-item brutal-box" data-hover>
+                        <div class="time">09:00 AM</div>
+                        <div class="details">
+                            <h3>REGISTRATION & BREACH</h3>
+                            <p>Gear up and infiltrate the venue.</p>
                         </div>
                     </div>
-                    <div class="timeline-item glass-card" id="tl-2" role="listitem">
-                        <div class="tl-time">10:00 AM</div>
-                        <div class="tl-dot" aria-hidden="true"></div>
-                        <div class="tl-content">
-                            <h3>Opening Keynote</h3>
-                            <p>The Future of AI Integration — Dr. Sarah Chen</p>
+                    <div class="schedule-item brutal-box" data-hover>
+                        <div class="time">10:00 AM</div>
+                        <div class="details">
+                            <h3>OPENING KEYNOTE</h3>
+                            <p>The Future of AI Integration.</p>
                         </div>
                     </div>
-                    <div class="timeline-item glass-card" id="tl-3" role="listitem">
-                        <div class="tl-time">11:30 AM</div>
-                        <div class="tl-dot" aria-hidden="true"></div>
-                        <div class="tl-content">
-                            <h3>Technical Workshops</h3>
-                            <p>Parallel tracks: Cloud Architecture &amp; Web3 Dev</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item glass-card" id="tl-4" role="listitem">
-                        <div class="tl-time">01:00 PM</div>
-                        <div class="tl-dot" aria-hidden="true"></div>
-                        <div class="tl-content">
-                            <h3>Networking Lunch</h3>
-                            <p>Connect with speakers, mentors, and fellow attendees.</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item glass-card" id="tl-5" role="listitem">
-                        <div class="tl-time">02:30 PM</div>
-                        <div class="tl-dot" aria-hidden="true"></div>
-                        <div class="tl-content">
-                            <h3>Panel Discussion</h3>
-                            <p>Industry leaders debate the next decade of technology.</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item glass-card" id="tl-6" role="listitem">
-                        <div class="tl-time">04:30 PM</div>
-                        <div class="tl-dot" aria-hidden="true"></div>
-                        <div class="tl-content">
-                            <h3>Closing &amp; Awards</h3>
-                            <p>Valedictory ceremony and award distribution.</p>
+                    <div class="schedule-item brutal-box" data-hover>
+                        <div class="time">11:30 AM</div>
+                        <div class="details">
+                            <h3>WORKSHOP WARFARE</h3>
+                            <p>Cloud Architecture & Web3 Dev.</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- ——— CONTACT ——— -->
-        <section id="section-contact" class="contact-section" aria-label="Contact and Registration">
-            <div class="section-inner">
-                <h2 class="section-title">Ready to <span class="gradient-text">Defy Gravity</span>?</h2>
-                <p class="section-desc contact-lead">Secure your spot at the most anticipated tech event of 2026.</p>
-                <div class="contact-grid">
-                    <div class="contact-card glass-card">
-                        <img src="acmlogo.png" alt="ACM AJCE Student Chapter Logo" class="contact-logo" loading="lazy"
-                            width="64" height="64">
-                        <h3>ACM AJCE Student Chapter</h3>
-                        <div class="contact-links">
-                            <a href="mailto:acmajce@amaljyothi.ac.in" class="contact-link" aria-label="Email ACM AJCE">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="2" aria-hidden="true">
-                                    <path
-                                        d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-                                    <polyline points="22,6 12,13 2,6" />
-                                </svg>
-                                acmajce@amaljyothi.ac.in
-                            </a>
-                            <a href="tel:+919946847530" class="contact-link" aria-label="Call ACM AJCE">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="2" aria-hidden="true">
-                                    <path
-                                        d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
-                                </svg>
-                                +91 99468 47530
-                            </a>
-                        </div>
-                        <div class="contact-socials">
-                            <a href="https://www.instagram.com/acm_ajce/" target="_blank" rel="noopener noreferrer"
-                                aria-label="ACM AJCE on Instagram" class="social-btn">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="2" aria-hidden="true">
-                                    <rect x="2" y="2" width="20" height="20" rx="5" />
-                                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-                                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
-                                </svg>
-                            </a>
-                            <a href="https://www.linkedin.com/company/acm-ajce-student-chapter/mycompany"
-                                target="_blank" rel="noopener noreferrer" aria-label="ACM AJCE on LinkedIn"
-                                class="social-btn">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="2" aria-hidden="true">
-                                    <path
-                                        d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
-                                    <rect x="2" y="9" width="4" height="12" />
-                                    <circle cx="4" cy="4" r="2" />
-                                </svg>
-                            </a>
-                        </div>
+        <!-- Panel 5 (Contact) -->
+        <section class="panel panel-contact" id="contact">
+            <div class="panel-inner contact-area">
+                <h2 class="brutal-title" data-hover>READY?</h2>
+
+                <div class="footer-grid">
+                    <div class="footer-col brutal-box text-center-col" data-hover
+                        onclick="window.open('https://ajce.acm.org/', '_blank')" style="cursor: pointer;">
+                        <img src="img/acmlogo.png" alt="ACM Logo" class="footer-logo">
+                        <h3>ACM AJCE Chapter</h3>
+                        <p>Host of TechTalk 2026. Join the revolution.</p>
+                        <a href="mailto:acmajce@amaljyothi.ac.in" class="footer-link" onclick="event.stopPropagation()"
+                            style="display: block;">acmajce@amaljyothi.ac.in</a>
+                        <a href="tel:+919946847530" class="footer-link" onclick="event.stopPropagation()"
+                            style="display: block; margin-top: 0.5rem;">Phone: +91 99468 47530</a>
                     </div>
-                    <div class="contact-card glass-card">
-                        <img src="cselogo.png" alt="CSE Department Logo — Amal Jyothi College" class="contact-logo"
-                            loading="lazy" width="64" height="64">
-                        <h3>Dept. of Computer Science</h3>
-                        <p class="contact-address">Amal Jyothi College of Engineering (Autonomous)<br>Kanjirapally,
-                            Kottayam District, Kerala</p>
-                        <div class="contact-links">
-                            <a href="tel:+918547888365" class="contact-link" aria-label="Call CSE Department">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="2" aria-hidden="true">
-                                    <path
-                                        d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
-                                </svg>
-                                +91 85478 88365
-                            </a>
-                        </div>
+
+                    <div class="footer-col social-col">
+                        <a href="https://www.instagram.com/acm_ajce/" target="_blank" rel="noopener noreferrer"
+                            class="giant-social-link" data-hover><span>INSTAGRAM</span> <span>↗</span></a>
+                        <a href="https://www.linkedin.com/company/acm-ajce-student-chapter/mycompany" target="_blank"
+                            rel="noopener noreferrer" class="giant-social-link" data-hover><span>LINKEDIN</span>
+                            <span>↗</span></a>
+                        <a href="#contact" class="giant-social-link highlight-bg" data-hover><span>REGISTER</span>
+                            <span>↗</span></a>
+                    </div>
+
+                    <div class="footer-col brutal-box text-center-col" data-hover
+                        onclick="window.open('https://www.ajce.in/cse/index.html', '_blank')" style="cursor: pointer;">
+                        <img src="img/cselogo.png" alt="CSE Logo" class="footer-logo">
+                        <h3>Dept. of CSE</h3>
+                        <p>Amal Jyothi College of Engineering</p>
+                        <p>Kanjirapally, Kerala</p>
                     </div>
                 </div>
-                <footer class="site-footer" role="contentinfo">
-                    <p>Developed by Lead Webmaster — ACM AJCE</p>
-                    <p>&copy; 2026 All rights reserved | ACM AJCE</p>
-                </footer>
+                <p class="footer-text" style="text-align: center; margin-top: 2rem;">
+                    Copyright © 2026 All rights reserved | ACM AJCE | TechTalk 2026 <br>
+                    Developed by <a href="https://abidts.work" target="_blank"
+                        style="color: var(--accent-pink); text-decoration: underline;" data-hover>Abid TS</a>
+                </p>
             </div>
         </section>
+
     </main>
 
-    <!-- ═══════════════════ SCRIPTS ═══════════════════ -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-
     <script src="js/three-setup.js"></script>
     <script src="js/main.js"></script>
 </body>
