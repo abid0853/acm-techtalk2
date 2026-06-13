@@ -261,6 +261,23 @@ html {
     box-shadow: 4px 4px 0px var(--accent-pink);
 }
 
+/* Hide the line break on Desktop/Tablets */
+.mobile-break {
+    display: none;
+}
+
+/* Force the break on Mobile Screens */
+@media (max-width: 768px) {
+    .mobile-break {
+        display: block;
+    }
+
+    /* Optional: Slightly tighten the line height so TECH and TALK sit closer together */
+    .hero-title .line {
+        line-height: 0.95;
+    }
+}
+
 /* ════════════ CANVAS ════════════ */
 #webgl-canvas {
     position: fixed;
