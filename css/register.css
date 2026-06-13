@@ -1,0 +1,534 @@
+/* ════════════════════════════════════════════════════════════════
+   REGISTER PAGE — Neo-Brutalist Stylesheet
+   Inherits all base tokens from style.css
+   ════════════════════════════════════════════════════════════════ */
+
+/* ════════════ REGISTER LAYOUT ════════════ */
+.register-wrapper {
+    position: relative;
+    z-index: 10;
+    background: var(--bg-color);
+    transition: background-color 0.3s ease;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+/* ════════════ HERO BANNER ════════════ */
+.reg-hero {
+    min-height: 55vh;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+    padding: clamp(7rem, 12vw, 12rem) clamp(1.5rem, 5vw, 5rem) clamp(2.5rem, 5vw, 5rem);
+    border-bottom: 4px solid var(--panel-border);
+    position: relative;
+    overflow: hidden;
+    background: var(--bg-color);
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.reg-hero::before {
+    content: '';
+    position: absolute;
+    top: -5%;
+    left: -5%;
+    width: 110%;
+    height: 110%;
+    background-image:
+        linear-gradient(to right, var(--panel-border) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--panel-border) 1px, transparent 1px);
+    background-size: 80px 80px;
+    opacity: 0.04;
+    pointer-events: none;
+    animation: regGridPan 20s linear infinite;
+}
+
+@keyframes regGridPan {
+    0% {
+        background-position: 0px 0px;
+    }
+
+    100% {
+        background-position: 80px 80px;
+    }
+}
+
+.reg-hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 100%;
+}
+
+.reg-hero-title {
+    font-family: var(--font-heading);
+    font-size: clamp(2.2rem, 6vw, 7rem);
+    font-weight: 800;
+    line-height: 0.9;
+    text-transform: uppercase;
+    color: var(--text-color);
+    word-break: break-word;
+}
+
+.reg-hero-title .line {
+    overflow: hidden;
+}
+
+/* ════════════ FORM SECTION ════════════ */
+.reg-form-section {
+    padding: clamp(3rem, 6vw, 6rem) clamp(1.5rem, 5vw, 5rem);
+    padding-bottom: clamp(4rem, 8vw, 8rem);
+    background: var(--bg-color);
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.reg-form-container {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: clamp(2rem, 4vw, 5rem);
+    max-width: 1400px;
+    margin: 0 auto;
+    align-items: start;
+    width: 100%;
+}
+
+/* ════════════ LEFT COLUMN: INFO ════════════ */
+.reg-info-col {
+    position: sticky;
+    top: clamp(5rem, 8vw, 8rem);
+}
+
+.reg-info-title {
+    margin-bottom: clamp(1.5rem, 3vw, 3rem);
+}
+
+.reg-perks {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(0.8rem, 1.5vw, 1.5rem);
+    margin-bottom: clamp(1.5rem, 3vw, 3rem);
+}
+
+.perk-item {
+    display: flex;
+    align-items: flex-start;
+    gap: clamp(0.8rem, 1.5vw, 1.5rem);
+    padding: clamp(1rem, 1.5vw, 1.5rem);
+}
+
+.perk-num {
+    font-family: var(--font-heading);
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    font-weight: 800;
+    color: var(--accent-pink);
+    line-height: 1;
+    flex-shrink: 0;
+    min-width: 2ch;
+}
+
+[data-theme="dark"] .perk-num {
+    color: var(--accent-cyan);
+}
+
+.perk-text h3 {
+    font-family: var(--font-heading);
+    font-size: clamp(0.8rem, 1.2vw, 1.1rem);
+    font-weight: 800;
+    text-transform: uppercase;
+    margin-bottom: 0.3rem;
+}
+
+.perk-text p {
+    font-size: clamp(0.8rem, 1vw, 0.95rem);
+    opacity: 0.7;
+    line-height: 1.5;
+}
+
+.reg-event-meta {
+    display: flex;
+    gap: clamp(0.6rem, 1vw, 1rem);
+    flex-wrap: wrap;
+}
+
+.reg-event-meta .meta-box {
+    font-size: clamp(0.7rem, 1vw, 0.9rem);
+    padding: clamp(0.5rem, 0.8vw, 0.8rem) clamp(0.8rem, 1.5vw, 1.5rem);
+}
+
+/* ════════════ RIGHT COLUMN: FORM ════════════ */
+.reg-form-col {
+    position: relative;
+    width: 100%;
+    min-width: 0;
+}
+
+.form-card {
+    padding: clamp(1.5rem, 3vw, 3rem);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.form-title {
+    font-family: var(--font-heading);
+    font-size: clamp(1.8rem, 3vw, 3rem);
+    font-weight: 800;
+    text-transform: uppercase;
+    margin-bottom: clamp(1.5rem, 2.5vw, 2.5rem);
+    line-height: 1;
+}
+
+.form-group {
+    margin-bottom: clamp(1rem, 1.5vw, 1.5rem);
+}
+
+.form-label {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: clamp(0.7rem, 0.85vw, 0.85rem);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 0.4rem;
+    color: var(--text-color);
+}
+
+.brutal-input {
+    width: 100%;
+    padding: clamp(0.7rem, 1vw, 1rem) clamp(0.8rem, 1.2vw, 1.2rem);
+    font-family: var(--font-body);
+    font-size: clamp(0.85rem, 1vw, 1rem);
+    font-weight: 600;
+    color: var(--text-color);
+    background: var(--bg-color);
+    border: 3px solid var(--panel-border);
+    outline: none;
+    box-sizing: border-box;
+    transition: box-shadow 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+    cursor: none;
+}
+
+.brutal-input:focus {
+    box-shadow: 5px 5px 0px var(--accent-pink);
+    transform: translate(-2px, -2px);
+}
+
+[data-theme="dark"] .brutal-input:focus {
+    box-shadow: 5px 5px 0px var(--accent-cyan);
+}
+
+.brutal-input::placeholder {
+    color: var(--text-color);
+    opacity: 0.3;
+    font-weight: 400;
+}
+
+.brutal-select {
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23050505' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    padding-right: 3rem;
+}
+
+[data-theme="dark"] .brutal-select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23f0f0f0' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+}
+
+.brutal-select option {
+    background: var(--bg-color);
+    color: var(--text-color);
+}
+
+/* ════════════ SUBMIT BUTTON ════════════ */
+.submit-btn {
+    width: 100%;
+    padding: clamp(0.8rem, 1.4vw, 1.3rem);
+    margin-top: clamp(0.8rem, 1.5vw, 1.5rem);
+    font-family: var(--font-heading);
+    font-size: clamp(0.9rem, 1.4vw, 1.3rem);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #000;
+    background: var(--accent-yellow);
+    border: 4px solid #000;
+    box-shadow: 6px 6px 0px #000;
+    cursor: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.submit-btn:hover {
+    transform: translate(-3px, -3px);
+    box-shadow: 9px 9px 0px var(--accent-pink);
+    background: var(--accent-cyan);
+}
+
+[data-theme="dark"] .submit-btn {
+    background: var(--accent-cyan);
+    box-shadow: 6px 6px 0px var(--accent-pink);
+}
+
+[data-theme="dark"] .submit-btn:hover {
+    background: var(--accent-yellow);
+    box-shadow: 9px 9px 0px var(--accent-cyan);
+    color: #000;
+}
+
+/* ════════════ FORM VALIDATION STATES ════════════ */
+.brutal-input.error {
+    border-color: var(--accent-pink);
+    box-shadow: 4px 4px 0px var(--accent-pink);
+    animation: inputShake 0.4s ease;
+}
+
+@keyframes inputShake {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-8px);
+    }
+
+    50% {
+        transform: translateX(8px);
+    }
+
+    75% {
+        transform: translateX(-4px);
+    }
+}
+
+.error-msg {
+    font-family: var(--font-heading);
+    font-size: clamp(0.65rem, 0.8vw, 0.8rem);
+    font-weight: 800;
+    color: var(--accent-pink);
+    text-transform: uppercase;
+    margin-top: 0.3rem;
+    display: none;
+}
+
+.form-group.has-error .error-msg {
+    display: block;
+}
+
+/* ════════════ SUCCESS OVERLAY ════════════ */
+.success-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: var(--bg-color);
+    z-index: 100010;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+}
+
+.success-overlay.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.success-content {
+    text-align: center;
+    padding: clamp(1.5rem, 4vw, 4rem);
+    max-width: 90vw;
+}
+
+.success-icon {
+    font-size: clamp(3rem, 8vw, 8rem);
+    font-weight: 800;
+    color: var(--accent-cyan);
+    line-height: 1;
+    margin-bottom: clamp(1rem, 2vw, 2rem);
+    border: 5px solid var(--accent-cyan);
+    width: clamp(5rem, 10vw, 10rem);
+    height: clamp(5rem, 10vw, 10rem);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+[data-theme="dark"] .success-icon {
+    border-color: var(--accent-pink);
+    color: var(--accent-pink);
+}
+
+.success-title {
+    font-family: var(--font-heading);
+    font-size: clamp(2.5rem, 7vw, 7rem);
+    font-weight: 800;
+    text-transform: uppercase;
+    line-height: 0.9;
+    margin-bottom: clamp(1rem, 2vw, 2rem);
+}
+
+.success-sub {
+    font-size: clamp(0.9rem, 1.5vw, 1.3rem);
+    font-weight: 600;
+    opacity: 0.7;
+    margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+/* ════════════ FOOTER ════════════ */
+.reg-footer {
+    padding: clamp(1.5rem, 3vw, 3rem) clamp(1.5rem, 5vw, 5rem);
+    border-top: 4px solid var(--panel-border);
+    background: var(--bg-color);
+}
+
+/* ════════════ DESKTOP LARGE (1440px+) ════════════ */
+@media (min-width: 1441px) {
+    .reg-form-container {
+        grid-template-columns: 1fr 1.3fr;
+        gap: 5rem;
+    }
+}
+
+/* ════════════ TABLET (769px - 1024px) ════════════ */
+@media (max-width: 1024px) {
+    .reg-form-container {
+        grid-template-columns: 1fr;
+        gap: clamp(2rem, 4vw, 3rem);
+    }
+
+    .reg-info-col {
+        position: static;
+    }
+
+    .reg-hero {
+        min-height: 45vh;
+        padding-top: clamp(6rem, 10vw, 10rem);
+    }
+
+    .nav-links,
+    .nav-register {
+        display: none !important;
+    }
+
+    .mobile-only {
+        display: block !important;
+    }
+
+    .mobile-menu-overlay {
+        height: 100dvh;
+    }
+
+    .brutal-nav {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 99999;
+    }
+
+    .reg-event-meta {
+        justify-content: flex-start;
+    }
+}
+
+/* ════════════ MOBILE (up to 768px) ════════════ */
+@media (max-width: 768px) {
+    .reg-hero {
+        min-height: 40vh;
+        padding: clamp(6rem, 10vw, 8rem) clamp(1rem, 4vw, 2rem) clamp(1.5rem, 3vw, 2rem);
+    }
+
+    .reg-hero-title {
+        font-size: clamp(2rem, 10vw, 3.5rem);
+    }
+
+    .reg-form-section {
+        padding: clamp(2rem, 5vw, 3rem) clamp(1rem, 4vw, 2rem);
+    }
+
+    .form-card {
+        padding: clamp(1.2rem, 4vw, 2rem);
+    }
+
+    .form-title {
+        font-size: clamp(1.5rem, 6vw, 2.2rem);
+    }
+
+    .perk-item {
+        padding: clamp(0.8rem, 2vw, 1.2rem);
+    }
+
+    .perk-num {
+        font-size: clamp(1.2rem, 5vw, 1.8rem);
+    }
+
+    .reg-event-meta {
+        flex-direction: column;
+    }
+
+    .reg-event-meta .meta-box {
+        width: 100%;
+        text-align: center;
+    }
+
+    .submit-btn {
+        padding: clamp(0.8rem, 3vw, 1.2rem);
+        font-size: clamp(0.85rem, 3.5vw, 1.1rem);
+    }
+
+    .custom-cursor {
+        display: none;
+    }
+
+    body {
+        cursor: auto;
+    }
+
+    .brutal-input,
+    .submit-btn {
+        cursor: auto;
+    }
+
+    .success-title {
+        font-size: clamp(2rem, 10vw, 4rem);
+    }
+
+    .success-icon {
+        width: clamp(4rem, 15vw, 6rem);
+        height: clamp(4rem, 15vw, 6rem);
+        font-size: clamp(2rem, 8vw, 4rem);
+    }
+}
+
+/* ════════════ SMALL MOBILE (up to 400px) ════════════ */
+@media (max-width: 400px) {
+    .reg-hero {
+        min-height: 35vh;
+    }
+
+    .reg-hero-title {
+        font-size: clamp(1.8rem, 9vw, 2.5rem);
+    }
+
+    .brutal-input {
+        padding: 0.6rem 0.8rem;
+        font-size: 0.85rem;
+    }
+
+    .form-card {
+        padding: 1rem;
+    }
+
+    .perk-item {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}

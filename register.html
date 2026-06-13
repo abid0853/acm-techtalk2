@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Register for ACM TechTalk 2026 — Defy Gravity. One Day. Infinite Possibilities.">
+    <title>REGISTER | ACM TechTalk 2026</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;900&family=Syne:wght@700;800&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/register.css">
+    <link rel="icon" type="image/png" href="img/favicon.png">
+</head>
+
+<body>
+    <div class="custom-cursor"></div>
+
+    <!-- Loader -->
+    <div class="loader-overlay">
+        <div class="loader-counter">0%</div>
+        <div class="loader-wipe"></div>
+    </div>
+
+    <!-- Nav -->
+    <nav class="brutal-nav">
+        <a href="index.html" class="nav-brand" data-hover style="text-decoration: none; color: inherit;">TECHTALK<span
+                class="highlight">26</span></a>
+        <div class="nav-links">
+            <a href="index.html#about" data-hover>ABOUT</a>
+            <a href="index.html#speakers" data-hover>SPEAKERS</a>
+            <a href="index.html#schedule" data-hover>SCHEDULE</a>
+        </div>
+        <div class="nav-actions">
+            <button id="theme-toggle" class="brutal-btn-icon" aria-label="Toggle Theme" data-hover
+                style="font-size: 1rem;">
+                <span class="icon-light">☾</span>
+                <span class="icon-dark">☀</span>
+            </button>
+            <a href="index.html" class="nav-register brutal-btn-small" data-hover>← HOME</a>
+            <button id="mobile-menu-btn" class="brutal-btn-icon mobile-only" aria-label="Menu" data-hover
+                style="font-size: 1rem;">☰</button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay" id="mobile-menu">
+        <div class="mobile-menu-inner">
+            <button id="mobile-close-btn" class="brutal-btn-icon" aria-label="Close Menu">CLOSE</button>
+            <a href="index.html" class="mobile-link">HOME</a>
+            <a href="index.html#about" class="mobile-link">ABOUT</a>
+            <a href="index.html#speakers" class="mobile-link">SPEAKERS</a>
+            <a href="index.html#schedule" class="mobile-link">SCHEDULE</a>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="register-wrapper">
+
+        <!-- Hero Banner -->
+        <section class="reg-hero">
+            <div class="reg-hero-content">
+                <h1 class="reg-hero-title" data-hover>
+                    <div class="line"><span>JOIN THE</span></div>
+                    <div class="line"><span class="highlight">REVOLUTION.</span></div>
+                </h1>
+                <div class="hero-sub clip-line">
+                    <span>SECURE YOUR SPOT. DEFY GRAVITY.</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Registration Form Section -->
+        <section class="reg-form-section">
+            <div class="reg-form-container">
+
+                <!-- Left Column: Info -->
+                <div class="reg-info-col">
+                    <h2 class="brutal-title reg-info-title" data-hover>WHY<br>REGISTER?</h2>
+
+                    <div class="reg-perks">
+                        <div class="perk-item brutal-box" data-hover>
+                            <span class="perk-num">01</span>
+                            <div class="perk-text">
+                                <h3>WORLD-CLASS SPEAKERS</h3>
+                                <p>Learn from CEOs and tech pioneers shaping the future.</p>
+                            </div>
+                        </div>
+                        <div class="perk-item brutal-box" data-hover>
+                            <span class="perk-num">02</span>
+                            <div class="perk-text">
+                                <h3>HANDS-ON WORKSHOPS</h3>
+                                <p>Deep dive into Cloud, AI, and Web3 technologies.</p>
+                            </div>
+                        </div>
+                        <div class="perk-item brutal-box" data-hover>
+                            <span class="perk-num">03</span>
+                            <div class="perk-text">
+                                <h3>NETWORKING & SWAG</h3>
+                                <p>Connect with 500+ tech enthusiasts. Exclusive merch included.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="reg-event-meta">
+                        <div class="meta-box brutal-box-small" data-hover>OCT 24, 2026</div>
+                        <div class="meta-box brutal-box-small" data-hover>AJCE AUDITORIUM</div>
+                        <div class="meta-box brutal-box-small" data-hover>FREE ENTRY</div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Form -->
+                <div class="reg-form-col">
+                    <div class="form-card brutal-box" data-hover>
+                        <h2 class="form-title">REGISTER<span class="highlight">.</span></h2>
+
+                        <form id="registration-form" autocomplete="off" novalidate>
+                            <div class="form-group">
+                                <label for="reg-name" class="form-label">FULL NAME</label>
+                                <input type="text" id="reg-name" class="brutal-input" placeholder="Enter your full name"
+                                    required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="reg-email" class="form-label">EMAIL</label>
+                                <input type="email" id="reg-email" class="brutal-input" placeholder="you@example.com"
+                                    required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="reg-phone" class="form-label">PHONE</label>
+                                <input type="tel" id="reg-phone" class="brutal-input" placeholder="+91 XXXXX XXXXX"
+                                    required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="reg-college" class="form-label">COLLEGE / ORGANIZATION</label>
+                                <input type="text" id="reg-college" class="brutal-input" placeholder="Your institution"
+                                    required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="reg-year" class="form-label">YEAR OF STUDY</label>
+                                <select id="reg-year" class="brutal-input brutal-select">
+                                    <option value="" disabled selected>Select year</option>
+                                    <option value="1">1st Year</option>
+                                    <option value="2">2nd Year</option>
+                                    <option value="3">3rd Year</option>
+                                    <option value="4">4th Year</option>
+                                    <option value="pg">PG / Research</option>
+                                    <option value="faculty">Faculty / Professional</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="reg-interest" class="form-label">AREA OF INTEREST</label>
+                                <select id="reg-interest" class="brutal-input brutal-select">
+                                    <option value="" disabled selected>Select interest</option>
+                                    <option value="ai">Artificial Intelligence</option>
+                                    <option value="web3">Web3 & Blockchain</option>
+                                    <option value="cloud">Cloud Architecture</option>
+                                    <option value="cyber">Cybersecurity</option>
+                                    <option value="fullstack">Full-Stack Development</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+
+                            <button type="submit" class="submit-btn" data-hover>
+                                <span class="btn-text">LAUNCH →</span>
+                                <span class="btn-loader" style="display:none;">PROCESSING...</span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Success Overlay (Hidden by default) -->
+        <div class="success-overlay" id="success-overlay">
+            <div class="success-content">
+                <div class="success-icon">✓</div>
+                <h2 class="success-title">YOU'RE IN<span class="highlight">.</span></h2>
+                <p class="success-sub">Registration confirmed. See you at the revolution.</p>
+                <a href="index.html" class="submit-btn" data-hover
+                    style="text-decoration: none; display: inline-block; text-align: center;">← BACK TO HOME</a>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <section class="panel panel-contact" id="contact">
+            <div class="panel-inner contact-area">
+                <h2 class="brutal-title" data-hover>READY?</h2>
+
+                <div class="footer-grid">
+                    <div class="footer-col brutal-box text-center-col" data-hover
+                        onclick="window.open('https://ajce.acm.org/', '_blank')" style="cursor: pointer;">
+                        <img src="img/acmlogo.png" alt="ACM Logo" class="footer-logo">
+                        <h3>ACM AJCE Chapter</h3>
+                        <p>Host of TechTalk 2026. Join the revolution.</p>
+                        <a href="mailto:acmajce@amaljyothi.ac.in" class="footer-link" onclick="event.stopPropagation()"
+                            style="display: block;">acmajce@amaljyothi.ac.in</a>
+                        <a href="tel:+919946847530" class="footer-link" onclick="event.stopPropagation()"
+                            style="display: block; margin-top: 0.5rem;">Phone: +91 99468 47530</a>
+                    </div>
+
+                    <div class="footer-col social-col">
+                        <a href="https://www.instagram.com/acm_ajce/" target="_blank" rel="noopener noreferrer"
+                            class="giant-social-link" data-hover><span>INSTAGRAM</span> <span>↗</span></a>
+                        <a href="https://www.linkedin.com/company/acm-ajce-student-chapter/mycompany" target="_blank"
+                            rel="noopener noreferrer" class="giant-social-link" data-hover><span>LINKEDIN</span>
+                            <span>↗</span></a>
+                        <a href="register.html" class="giant-social-link highlight-bg" data-hover><span>REGISTER</span>
+                            <span>↗</span></a>
+                    </div>
+
+                    <div class="footer-col brutal-box text-center-col" data-hover
+                        onclick="window.open('https://www.ajce.in/cse/index.html', '_blank')" style="cursor: pointer;">
+                        <img src="img/cselogo.png" alt="CSE Logo" class="footer-logo">
+                        <h3>Dept. of CSE</h3>
+                        <p>Amal Jyothi College of Engineering</p>
+                        <p>Kanjirapally, Kerala</p>
+                    </div>
+                </div>
+                <p class="footer-text" style="text-align: center; margin-top: 2rem;">
+                    Copyright © 2026 All rights reserved | ACM AJCE | TechTalk 2026 <br>
+                    Developed by <a href="https://abidts.work" target="_blank"
+                        style="color: var(--accent-pink); text-decoration: underline;" data-hover>Abid TS</a>
+                </p>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="js/register.js"></script>
+</body>
+
+</html>
